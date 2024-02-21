@@ -91,11 +91,16 @@ class ThemeCustomizationRepository extends Repository
                 if (($data['type'] ?? '') == 'static_content') {
                     return Storage::url($path);
                 }
-
-                $options['images'][] = [
+                $data = [
                     'image' => 'storage/'.$path,
-                    'link'  => $image['link'],
+                    'link'  => $image['link']
                 ];
+
+                if(isset($image['title'])) {
+                    $data['title']  = $image['title'];
+                }
+                
+                $options['images'][] = $data;
             } else {
                 $options['images'][] = $image;
             }
