@@ -62,6 +62,7 @@ class AddressController extends Controller
             'postcode'     => ['required', 'numeric'],
             'phone'        => ['required', new PhoneNumber],
             'vat_id'       => [new VatIdRule()],
+            'email'        => ['required'],
         ]);
 
         $data = array_merge(request()->only([
@@ -120,6 +121,7 @@ class AddressController extends Controller
             'postcode'     => ['required', 'numeric'],
             'phone'        => ['required', new PhoneNumber],
             'vat_id'       => [new VatIdRule()],
+            'email'        => ['required'],
         ]);
 
         $data = array_merge(request()->only([
@@ -134,6 +136,7 @@ class AddressController extends Controller
             'state',
             'postcode',
             'phone',
+            'email',
             'default_address',
         ]), [
             'address1' => implode(PHP_EOL, array_filter(request()->input('address1'))),
